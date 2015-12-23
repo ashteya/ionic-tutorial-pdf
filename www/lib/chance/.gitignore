@@ -1,0 +1,8 @@
+node_modules
+*~
+.idea
+dependencies
+test/lib
+coverage
+# Ignore gh-pages specific content
+public

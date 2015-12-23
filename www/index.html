@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <script src="lib/pdfmake/build/pdfmake.js"></script>
+    <script src="lib/pdfmake/build/vfs_fonts.js"></script>
+    <script src="lib/pdfjs-dist/build/pdf.js"></script>
+    <script src="lib/angular-pdf/dist/angular-pdf.js"></script>
+
+    <!-- Chance.js is only used to generate random data -->
+    <script src="lib/chance/chance.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/invoice.service.js"></script>
+    <script src="js/document.controller.js"></script>
+</head>
+
+<body ng-app="starter">  
+    <ion-pane>
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">PDF Tutorial</h1>
+      </ion-header-bar>
+      <ion-content ng-controller="DocumentController as vm" class="padding">
+        <p><button ng-click="vm.createInvoice()" class="button icon-left ion-play button-assertive">Create Invoice</button></p> 
+      </ion-content>
+    </ion-pane>
+</body>  
+
+<script id="pdf-viewer.html" type="text/ng-template">  
+    <ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">Invoice</h1> 
+        <button ng-click="vm.modal.hide()" class="button button-icon icon ion-android-close"></button>
+    </ion-header-bar>
+    <ion-content>
+        <ng-pdf ng-if="pdfUrl" template-url="partials/viewer.html" canvasid="pdf" scale="page-fit"></ng-pdf>  
+    </ion-content>
+    </ion-modal-view>
+</script>  
+
+</html>
